@@ -1,5 +1,5 @@
 module.exports = {
     base: '/thunder/',
-    title: 'Hello VuePress',
+    title: 'Thunder',
     description: 'Just playing around'
 }
