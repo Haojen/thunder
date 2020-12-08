@@ -13,15 +13,18 @@
             justify-content: center;
             align-items: flex-end;
 
+            //border: 1px solid red;
+
             height: 200px;
             margin-bottom: 15px;
 
             > div {
                 width: 32px;
-                height:  100%;
-                border: 1px solid green;
+                height: 100%;
                 border-radius: 4px;
+
                 margin: 0 8px;
+                background: -webkit-linear-gradient(bottom, #5559AD, #618CB4);
             }
         }
     }
@@ -37,7 +40,9 @@
 <template>
     <main class="bubble-sort-widget">
         <section class="pillar-box">
-            <div v-for="item in data" :style="`height: ${ item * 10 + 10}%`"></div>
+            <div v-for="item in data"
+                 :style="`height: ${ item }%; ${ linearGradientColor }`">
+            </div>
         </section>
         <main class="progress-bar-widget">
             <input type="range" min="0" max="100" value="70"/>
@@ -47,21 +52,21 @@
 
 <script>
 import anime from 'animejs'
+import randomColor from '../shared/randomColor'
+import randomRangeNumber from '../shared/randomRangeNumber'
+
+function createLinearGradient() {
+    const color = randomColor()
+    return `background: -webkit-linear-gradient(bottom, ${ color.colors.join(',') });`
+}
+
 export default {
     name: "bubble-sort",
     data() {
         return {
-            data: [
-                1,
-                3,
-                5,
-                7,
-                9,
-                12,
-                0,
-                4,
-                2
-            ]
+            linearGradientColor: createLinearGradient(),
+            data: randomRangeNumber(10, 5),
+            infoText: ''
         }
     },
     mounted() {
