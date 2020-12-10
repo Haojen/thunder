@@ -1,5 +1,4 @@
-# Hello VuePress
+# Bubble Sort
 
-## nihao
 
 <bubble-sort/>   
